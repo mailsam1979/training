@@ -1,0 +1,10 @@
+---
+# docker_image Module
+
+- hosts: dbserv
+  tasks:
+
+  - name: pull docker image
+    docker_image:
+      name: ubuntu
+...
