@@ -6,5 +6,5 @@
 
   - name: pull docker image
     docker_image:
-      name: php
+      name: centos
 ...
