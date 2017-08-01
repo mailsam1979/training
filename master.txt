@@ -1,5 +1,6 @@
 line by master 1
 line by master
 line by dev1
-
+========================
+new line from dev branch 1
 
