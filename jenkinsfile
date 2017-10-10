@@ -7,20 +7,13 @@ pipeline {
             sh 'mvn clean compile'
                     }
               }
-      }
-      steps{
-        stage ('Test Stage') {
-          withMaven(maven : 'local_maven') {
-            sh 'mvn test'
-                    }
-              }
-      }
+           }
       steps{
         stage ('Deployment Stage') {
           withMaven(maven : 'local_maven') {
            sh 'mvn deploy'
                     }
               }
+          }
       }
-       }
 }
