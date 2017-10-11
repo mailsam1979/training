@@ -19,6 +19,18 @@ pipeline {
           echo "###########################"
 		     }
 	   }
-
+    stage ('Show BuildID') {
+	   steps { 
+	      echo "Build is ${env.BUILD_ID}"
+          echo "###########################"
+		     }
+	   }
+	   
+    stage ('Show JenkinsURL') {
+	   steps { 
+	      echo "Jenkins URL is ${env.JENKINS_URL}"
+          echo "###########################"
+		     }
+	   }
     }
 }
