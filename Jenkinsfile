@@ -1,10 +1,15 @@
 /*Jenkinsfile (Declarative Pipeline)*/
 pipeline { 
   agent any
+  environment {
+      name = 'sukanta'
+	          }
+			   
   stages {
     stage ('Maven Build') {
 	   steps { 
 	      echo "Maven Build Starts and Ends"
+		  echo "Name is ... ${env.name}"
 		  echo "###########################"
 		     }
 	   }
@@ -23,6 +28,16 @@ pipeline {
     stage ('Show BuildID') {
 	   steps { 
 	      echo "Build is ${env.BUILD_ID}"
+          echo "###########################"
+		     }
+	   }
+   stage ('Set Env Vars...') {
+       environment {
+	      DEBUG_FLAGS = '-g'
+		     }
+	   steps { 
+	      echo "Show Env Var ...."
+		  sh 'printenv'
           echo "###########################"
 		     }
 	   }
