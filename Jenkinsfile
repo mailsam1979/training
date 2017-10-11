@@ -5,7 +5,9 @@ pipeline {
       name = 'sukanta'
 	  midname = 'kumar'
 	          }
-			   
+  parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }			   
   stages {
     stage ('Maven Build') {
 	   steps { 
@@ -41,10 +43,9 @@ pipeline {
           echo "###########################"
 		     }
 		}
-    stage ('Display all env vars') {
+    stage ('Display user defined Parameters') {
 	    steps {
-		   echo "List all Environment Variables"
-		   sh 'printenv'
+		   echo "${params.Greeting} ... Vikram"
 	          }
 	   }
 
