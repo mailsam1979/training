@@ -1,7 +1,6 @@
 /*Jenkinsfile (Declarative Pipeline)*/
 pipeline { 
-  agent any
-    }
+  agent any   
 	
   tools {
      maven 'local_maven'
