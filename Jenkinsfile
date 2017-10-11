@@ -2,12 +2,26 @@
 
 pipeline {
   agent any
+  tools {
+     maven 'local_maven'
+	 jdk 'local_jdk'
+	    }
+		
   stages {
-    stage ('Compile Stage') {
-	   steps {
-           withMaven (maven : 'local_maven')
-             sh 'mvn clean compile'	 
+  stage {
+  steps {
+	     sh '''
+		    echo "PATH = $PATH"
+			echo "M2_HOME = ${M2_HOME}"
+			'''
+			}
+		}
+  stage ('Veryfy Stage') {
+  steps {
+  dir("project_templates/java_project_template")   
+  sh 'mvn clean verify'	 
 	      }  	   
-       } 
+       }
+  
    }
 }
