@@ -56,12 +56,12 @@ pipeline {
 	   }
 		   
     } 
-    post {
+/*    post {
       always {
         mail to: sukanta04u@gmail.com, subject: 'pipeline passed :('
              }
       failed {
         mail to: sukanta04u@gmail.com, subject: 'pipeline failed :('
              }
-         }			 
+         }	*/		 
 }
