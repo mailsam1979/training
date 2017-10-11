@@ -54,5 +54,13 @@ pipeline {
 		   echo "${params.Greeting2} ... Vikram"
 	          }
 	   }
-    }  
+		   
+    } 
+    post {
+      always {
+        mail to: sukanta04u@gmail.com, subject: 'pipeline passed'
+             }
+      failed {
+        mail to: sukanta04u@gmail.com, subject: 'pipeline failed'
+             }		
 }
