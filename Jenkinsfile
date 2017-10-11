@@ -43,6 +43,7 @@ pipeline {
 	    steps {
 		   echo "List all Environment Variables"
 		   sh 'printenv'
+	          }
 	   }
 
     }
