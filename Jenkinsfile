@@ -39,6 +39,7 @@ pipeline {
 	      echo "Show Env Var surname .... ${env.surname}"
           echo "###########################"
 		     }
+		}
     stage ('Display all env vars') {
 	    steps {
 		   echo "List all Environment Variables"
@@ -46,5 +47,5 @@ pipeline {
 	          }
 	   }
 
-    }
+    }  
 }
