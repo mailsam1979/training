@@ -31,15 +31,18 @@ pipeline {
           echo "###########################"
 		     }
 	   }
-   stage ('Set Env Vars...') {
+   stage ('Set Env Vars surname ...') {
        environment {
-	      DEBUG_FLAGS = '-g'
+	      surname = 'sahoo'
 		     }
 	   steps { 
-	      echo "Show Env Var ...."
-		  sh 'printenv'
+	      echo "Show Env Var surname .... ${env.surname}"
           echo "###########################"
 		     }
+    stage ('Display all env vars') {
+	    steps {
+		   echo "List all Environment Variables"
+		   sh 'printenv'
 	   }
 
     }
