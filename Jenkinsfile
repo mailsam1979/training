@@ -1,26 +1,13 @@
 /*Jenkinsfile (Declarative Pipeline)*/
-pipeline { 
-  agent any   
-	
-  tools {
-     maven 'local_maven'
-     jdk 'local_jdk'
-        }
-		
+
+pipeline {
+  agent any
   stages {
-    stage ('Initialise') {
-	   steps { 
-	      sh '''
-		       echo "JAVA_HOME = ${local_jdk}"
-			   echo "M2_HOME = ${local_maven}"
-			  '''
-		     }
-	   }
-    stage ('Final') {
-	   steps { 
-	      echo "THis sia minimal pipeline"  
-		     }
-	   }
-   	   
-    } 
+    stage ('Compile Stage') {
+	   steps {
+           withMaven (maven : 'local_maven')
+             sh 'mvn clean compile'	 
+	      }  	   
+       } 
+   }
 }
