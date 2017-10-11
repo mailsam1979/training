@@ -1,21 +1,24 @@
 pipeline {
-    agent any
+  agent any
+  stages {
+    stage ('Maven Build') {
+	   steps { 
+	      echo "Maven Build Starts and Ends"
+		  echo "###########################"
+		     }
+	   }
+    stage ('Maven Compile') {
+	   steps { 
+	      echo "Maven Compile Starts and Ends"
+          echo "###########################"		  
+		     }
+	   }
+    stage ('Maven TEst') {
+	   steps { 
+	      echo "Maven Test Starts and Ends"
+          echo "###########################"
+		     }
+	   }
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
     }
 }
