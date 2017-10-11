@@ -58,10 +58,10 @@ pipeline {
     } 
     post {
       always {
-        mail to: sukanta04u@gmail.com, subject: 'pipeline passed'
+        mail to: sukanta04u@gmail.com, subject: 'pipeline passed :('
              }
       failed {
-        mail to: sukanta04u@gmail.com, subject: 'pipeline failed'
+        mail to: sukanta04u@gmail.com, subject: 'pipeline failed :('
              }
          }			 
 }
