@@ -17,8 +17,7 @@ pipeline {
 			}
 		}
   stage ('Veryfy Stage') {
-  steps {
-  dir("project_templates/java_project_template")   
+  steps {  
   sh 'mvn clean verify'	 
 	      }  	   
        }
