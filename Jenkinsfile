@@ -26,10 +26,16 @@ pipeline {
 		     }
 	   }
 	   
-    stage ('Show JenkinsURL') {
+    stage ('Show Jenkins JOb Name') {
 	   steps { 
-	      echo "Jenkins URL is ${env.JENKINS_URL}"
-          echo "###########################"
+	      echo "Jenkins Job Name is ${env.JOB_NAME}"
+          echo "##################################"
+		     }
+	   }
+    stage ('Show Jenkins URL') {
+	   steps { 
+	      echo "Jenkins Job Name is ${env.HOME}"
+          echo "#####################################"
 		     }
 	   }
     }
