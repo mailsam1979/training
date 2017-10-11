@@ -14,6 +14,7 @@ pipeline {
 	      sh '''
 		       echo "JAVA_HOME = ${local_jdk}"
 			   echo "M2_HOME = ${local_maven}"
+			  '''
 		     }
 	   }
     stage ('Final') {
