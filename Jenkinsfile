@@ -1,7 +1,4 @@
-pipeline {
-  node {
-     checkout scm
-	 }
+pipeline { 
   agent any
   stages {
     stage ('Maven Build') {
