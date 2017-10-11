@@ -62,5 +62,6 @@ pipeline {
              }
       failed {
         mail to: sukanta04u@gmail.com, subject: 'pipeline failed'
-             }		
+             }
+         }			 
 }
