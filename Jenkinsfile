@@ -8,7 +8,7 @@ pipeline {
 	    }
 		
   stages {
-  stage {
+  stage ('Initialise'){
   steps {
 	     sh '''
 		    echo "PATH = $PATH"
