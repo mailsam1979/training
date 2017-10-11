@@ -6,7 +6,8 @@ pipeline {
 	  midname = 'kumar'
 	          }
   parameters {
-        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+        string(name: 'Greeting1', defaultValue: 'Hello1', description: 'How should I greet the world?')
+		string(name: 'Greeting2', defaultValue: 'Hello2', description: 'How should I greet the world?')
     }			   
   stages {
     stage ('Maven Build') {
@@ -43,11 +44,15 @@ pipeline {
           echo "###########################"
 		     }
 		}
-    stage ('Display user defined Parameters') {
+    stage ('Display user defined Parameters1') {
 	    steps {
-		   echo "${params.Greeting} ... Vikram"
+		   echo "${params.Greeting1} ... Vikram"
 	          }
 	   }
-
+    stage ('Display user defined Parameters2') {
+	    steps {
+		   echo "${params.Greeting2} ... Vikram"
+	          }
+	   }
     }  
 }
