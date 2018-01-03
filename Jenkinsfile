@@ -33,13 +33,7 @@ pipeline {
   stage ('Install Stage') {
 	  steps {
 		sh 'mvn clean install'
-			}
-		
-	    post {
-		   success {
-		       'junit target/surefire-reports/*.xml'
-			       }
-			  }
+			}	  
 		}
 	
    }
