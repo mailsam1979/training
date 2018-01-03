@@ -9,32 +9,38 @@ pipeline {
 		
   stages {
   
-  stage ('Initialise'){
-  steps {
-	     sh '''
-		    echo "PATH = $PATH"
-			echo "M2_HOME = ${M2_HOME}"
-			'''
-		}
-		}
+  stage ('Initialize'){
+	  steps {
+			 sh '''
+				echo "PATH = $PATH"
+				echo "M2_HOME = ${M2_HOME}"
+				'''
+			}
+			}
 		
   stage ('Verify Stage') {
-  steps {  
-  sh 'mvn clean verify'	 
-	    }  	   
-       }
+	  steps {  
+	  sh 'mvn clean verify'	 
+			}  	   
+		   }
 	   
   stage ('Compile Stage') {
-  steps {
-    sh 'mvn clean compile'
+	  steps {
+		sh 'mvn clean compile'
+			}
 		}
-	}
 	
   stage ('Install Stage') {
-  steps {
-    sh 'mvn clean install'
+	  steps {
+		sh 'mvn clean install'
+			}
+		
+	    post {
+		   success {
+		       junit target/surefire-reports/*.xml
+			       }
+			  }
 		}
-	}
 	
    }
 }
