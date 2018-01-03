@@ -1,10 +1,14 @@
 /*Jenkinsfile (Declarative Pipeline)*/
 
 pipeline {
-  agent any
+  agent {
+			node {
+			       label 'jslave'
+				 }			
+		}
   tools {
-     maven 'local_maven'
-	 jdk 'local_jdk'
+     maven 'maven339'
+	 jdk 'jdk180'
 	    }
 		
   stages {
@@ -37,5 +41,4 @@ pipeline {
 		}
 	
    }
-
 }
