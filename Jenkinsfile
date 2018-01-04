@@ -1,32 +1,37 @@
-node {
-    try {
-        notifyBuild('STARTED')
+pipeline {
+  agent {
+			node {
+					label 'jslave'
 
-        stage('Prepare code') {
-            gitCheckThatOut('master', 'https://github.com/mailsam1979/training.git')
-        }
+					try {
+						notifyBuild('STARTED')
 
-        stage('Testing') {
-            echo 'Testing'
-            echo 'Testing - publish coverage results'
-        }
+						stage('Prepare code') {
+							gitCheckThatOut('master', 'https://github.com/mailsam1979/training.git')
+						}
 
-        stage('Staging') {
-            echo 'Deploy Stage'
-        }
-        // @todo add checkpoint
-        stage('Deploy') {
-            echo 'Deploy - Backend'
-            echo 'Deploy - Frontend'
-        }
-  } catch (e) {
-    // If there was an exception thrown, the build failed
-    currentBuild.result = "FAILED"
-    throw e
-  } finally {
-    // Success or failure, always send notifications
-    notifyBuild(currentBuild.result)
-  }
+						stage('Testing') {
+							echo 'Testing'
+							echo 'Testing - publish coverage results'
+						}
+
+						stage('Staging') {
+							echo 'Deploy Stage'
+						}
+						// @todo add checkpoint
+						stage('Deploy') {
+							echo 'Deploy - Backend'
+							echo 'Deploy - Frontend'
+						}
+				  } catch (e) {
+					// If there was an exception thrown, the build failed
+					currentBuild.result = "FAILED"
+					throw e
+				  } finally {
+					// Success or failure, always send notifications
+					notifyBuild(currentBuild.result)
+				  }
+		}
 }
 
 
@@ -86,11 +91,11 @@ def notifyBuild(String buildStatus = 'STARTED') {
   // Send notifications
   slackSend (color: colorCode, message: summary)
 
-  emailext(
+/*  emailext(
       subject: subject,
       body: details,
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-    )
+    ) */
 }
 
 def gitCheckThatOut(String branch, String vcsUrl) {
@@ -105,4 +110,5 @@ def gitCheckThatOut(String branch, String vcsUrl) {
     echo "${tagName}"
     // set DisplayName
     currentBuild.displayName = tagName
+}
 }
