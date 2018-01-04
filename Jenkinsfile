@@ -15,34 +15,27 @@ pipeline {
 	 jdk 'jdk180'
 	    }
 /* Stage Section */		
-  stages {
-  
-  stage ('Initialize'){
-	  steps {
-			 sh '''
-				echo "PATH = $PATH"
-				echo "M2_HOME = ${M2_HOME}"
-				'''
-			}
-			}
-		
-  stage ('Verify Stage') {
-	  steps {  
-	  sh 'mvn clean verify'	 
-			}  	   
-		   }
-	   
-  stage ('Compile Stage') {
-	  steps {
-		sh 'mvn clean compile'
-			}
-		}
-	
+  stages {	
   stage ('Install Stage') {
 	  steps {
 		sh 'mvn clean install'
-			}	  
+			}
+      post {
+			always {
+						archive "target/*.jar"
+						junit 'target/surefire-reports/*.xml'
+					}
+			success {
+					slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")					
+					}
+			unstable {
+					slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")					
+					}							
+			failure {
+					slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")					
+					}	            	  
 		}
 	
    }
+}
 }
