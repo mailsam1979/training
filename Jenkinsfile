@@ -33,6 +33,7 @@ pipeline {
 				  }
 		}
 }
+}
 
 
 /**
@@ -110,5 +111,4 @@ def gitCheckThatOut(String branch, String vcsUrl) {
     echo "${tagName}"
     // set DisplayName
     currentBuild.displayName = tagName
-}
 }
