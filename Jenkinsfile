@@ -31,13 +31,13 @@ pipeline {
 			}
   notifications {  
 			success {
-					slackSend (color: '#FFFF00', message: "Job: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) SUCCESSFUL ")					
+					slackSend (color: 'GREEN', message: "Job: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) SUCCESSFUL ")					
 					}
 			unstable {
-					slackSend (color: '#FFFF00', message: "Job: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) Unstable ")					
+					slackSend (color: 'YELLOW', message: "Job: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) Unstable ")					
 					}							
 			failure {
-					slackSend (color: '#FFFF00', message: "Job:  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})  Failed")					
+					slackSend (color: 'RED', message: "Job:  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})  Failed")					
 					}	            	  
 		}
 	
