@@ -22,6 +22,7 @@ pipeline {
 		sh 'mvn clean install -Dmaven.test.failure.ignore=true'
 			}
 		}
+	}
 		
   postBuild {
 			always {
@@ -41,5 +42,4 @@ pipeline {
 					}	            	  
 		}
 	
-   }
 }
