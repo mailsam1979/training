@@ -6,7 +6,7 @@ pipeline {
 /* agent section */
   agent {
 			node {
-			        label "jslave"
+			        label "kslave"
 				 }		
 		}
 /* tool section */
