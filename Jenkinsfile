@@ -24,13 +24,12 @@ pipeline {
 		}
 	}
 		
-  postBuild {
+  post {
 			always {
 						archive "target/*.jar"
 						junit 'target/surefire-reports/*.xml'
-					}
-			}
-  notifications {  
+					}	
+    
 			success {
 					slackSend (color: 'GREEN', message: "Job: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) SUCCESSFUL ")					
 					}
