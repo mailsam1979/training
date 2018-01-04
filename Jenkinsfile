@@ -14,25 +14,30 @@ pipeline {
      maven 'maven339'
 	 jdk 'jdk180'
 	    }
+		
 /* Stage Section */		
   stages {	
   stage ('Install Stage') {
 	  steps {
-		sh 'mvn clean install'
+		sh 'mvn clean install -Dmaven.test.failure.ignore=true'
 			}
-      post {
+		}
+		
+  postBuild {
 			always {
 						archive "target/*.jar"
 						junit 'target/surefire-reports/*.xml'
 					}
+			}
+  notifications {  
 			success {
-					slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")					
+					slackSend (color: '#FFFF00', message: "Job: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) SUCCESSFUL ")					
 					}
 			unstable {
-					slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")					
+					slackSend (color: '#FFFF00', message: "Job: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) Unstable ")					
 					}							
 			failure {
-					slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")					
+					slackSend (color: '#FFFF00', message: "Job:  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})  Failed")					
 					}	            	  
 		}
 	
