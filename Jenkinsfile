@@ -1,5 +1,4 @@
-node 'slave' {							// run job on master jenkins , if you have agent or slave then use that one
-        
+node 'slave' {							// run job on master jenkins , if you have agent or slave then use that one        
 
    def gitBranch = 'master'
    def mvnHome = tool 'local_maven'			// ** local_maven configured in the global tool configuration.
@@ -12,7 +11,7 @@ node 'slave' {							// run job on master jenkins , if you have agent or slave t
    stage('Stage2-Maven Validate') {
       // Run the maven build
       if (isUnix()) {				// check if system is Unix Or not
-         sh "'${mvnHome}/bin/mvn' clean verify"
+         sh "${mvnHome}/bin/mvn clean verify"
       } else {
          bat(/"${mvnHome}\bin\mvn"  clean verify/)
       }
