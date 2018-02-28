@@ -1,5 +1,5 @@
-node 'slave' { 
-   label 'slave'
+node  { 
+   
    def gitBranch = 'master'
    def mvnHome = tool 'local_maven'			// ** local_maven configured in the global tool configuration.
    def jdkHome = tool 'local_jdk'			// ** local_jdk configured in the global tool configuration.
