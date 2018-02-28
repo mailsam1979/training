@@ -1,4 +1,4 @@
-node  { 
+node 'slave' { 
    
    def gitBranch = 'master'
    def mvnHome = tool 'local_maven'			// ** local_maven configured in the global tool configuration.
