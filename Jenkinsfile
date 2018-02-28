@@ -7,7 +7,7 @@ node('slave') {
    
    println"The Value for to_run is ${params.to_run}"
    
-   if (params.goahead == 'yes') {
+   if (params.to_run == 'yes') {
    
    stage('Stage1-Preparation') {       
       git url: 'https://github.com/mailsam1979/training.git', branch: "${gitBranch}"                 
