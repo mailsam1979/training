@@ -31,10 +31,14 @@ node('slave') {
      archive 'target/*.jar'
    }
    
-   stage('Show-Output') {
-       println"Build number  ${env.BUILD_NUMBER} for Job ${env.PROJECT_NAME} is ${env.BUILD_STATUS}"
-	   println"Build number  ${env.BUILD_NUMBER}"
-	   println"Job Name ${env.PROJECT_NAME}"
-	   println"Job Status ${env.BUILD_STATUS}"	   
+   stage('Show-Output') {						// use of Jenkins BUilt-in variables in groovy scripting
+	   println"Job Name  ${env.JOB_NAME}"
+       println"Build number  ${env.BUILD_NUMBER}"	   
+	   println"Build URL ${env.BUILD_URL}"
+	   println"Jenkins Node ${env.NODE_NAME}"
+	   println"Jenkins URL ${env.JENKINS_URL}"
+	   println"GIT URL ${env.GIT_URL}"
+	   println"GIT BRANCH ${env.GIT_BRANCH}"
+	
    }
 }
