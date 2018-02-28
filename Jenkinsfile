@@ -1,5 +1,4 @@
-node 'slave' { 
-   
+node('slave') {    
    def gitBranch = 'master'
    def mvnHome = tool 'local_maven'			// ** local_maven configured in the global tool configuration.
    def jdkHome = tool 'local_jdk'			// ** local_jdk configured in the global tool configuration.
@@ -33,6 +32,6 @@ node 'slave' {
    }
    
    stage('Show-Output') {
-       echo "Build number  ${env.BUILD_NUMBER} for Job ${env.PROJECT_NAME} is ${env.BUILD_STATUS}"
+       println"Build number  ${env.BUILD_NUMBER} for Job ${env.PROJECT_NAME} is ${env.BUILD_STATUS}"
    }
 }
