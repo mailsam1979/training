@@ -1,18 +1,18 @@
 node('slave') {    
    def gitBranch = 'master'
-   def mvnHome = tool 'local_maven'			// ** local_maven configured in the global tool configuration.
-   def jdkHome = tool 'local_jdk'			// ** local_jdk configured in the global tool configuration.
+   def mvnHome = tool 'local_maven'
+   def jdkHome = tool 'local_jdk'
    
    stage('Stage1-Preparation') {       
-      git url: 'https://github.com/mailsam1979/training.git', branch: "${gitBranch}"  		// get code from git                 
+      git url: 'https://github.com/mailsam1979/training.git', branch: "${gitBranch}"                 
    }
    
    stage('Stage2-Maven Validate') {
-      // Run the maven build
+      // Run the maven validate
       if (isUnix()) {				// check if system is Unix Or not
-         sh "${mvnHome}/bin/mvn clean verify"
+         sh "${mvnHome}/bin/mvn clean validate"
       } else {
-         bat(/"${mvnHome}\bin\mvn"  clean verify/)
+         bat(/"${mvnHome}\bin\mvn"  clean validate/)
       }
    }   
    
@@ -33,5 +33,8 @@ node('slave') {
    
    stage('Show-Output') {
        println"Build number  ${env.BUILD_NUMBER} for Job ${env.PROJECT_NAME} is ${env.BUILD_STATUS}"
+	   println"Build number  ${env.BUILD_NUMBER}"
+	   println"Job Name ${env.PROJECT_NAME}"
+	   println"Job Status ${env.BUILD_STATUS}"	   
    }
 }
