@@ -43,8 +43,8 @@ node('slave') {
 	   println"Build URL ${env.BUILD_URL}"
 	   println"Jenkins Node ${env.NODE_NAME}"
 	   println"Jenkins URL ${env.JENKINS_URL}"
-	   println"GIT URL ${env.GIT_URL}"
-	   println"GIT BRANCH ${env.GIT_BRANCH}"
+	   println"GIT URL ${GIT_URL}"
+	   println"GIT BRANCH ${GIT_BRANCH}"
 	
    }
   }
