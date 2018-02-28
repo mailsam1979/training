@@ -1,4 +1,4 @@
-node 'slave' {							// run job on master jenkins , if you have agent or slave then use that one        
+node 'slave' { 
 
    def gitBranch = 'master'
    def mvnHome = tool 'local_maven'			// ** local_maven configured in the global tool configuration.
