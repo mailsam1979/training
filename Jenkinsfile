@@ -3,6 +3,12 @@ node('slave') {
    def mvnHome = tool 'local_maven'
    def jdkHome = tool 'local_jdk'
    
+   // if project is parameterized 
+   
+   println"The Value for goahead is ${params.goahead}"
+   
+   if (params.goahead) {
+   
    stage('Stage1-Preparation') {       
       git url: 'https://github.com/mailsam1979/training.git', branch: "${gitBranch}"                 
    }
@@ -41,4 +47,5 @@ node('slave') {
 	   println"GIT BRANCH ${env.GIT_BRANCH}"
 	
    }
+  }
 }
