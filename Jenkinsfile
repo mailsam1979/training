@@ -33,6 +33,6 @@ node  {
    }
    
    stage('Show-Output') {
-       echo "Build number  ${BUILD_NUMBER} for Job ${PROJECT_NAME} is ${BUILD_STATUS}"
+       echo "Build number  ${env.BUILD_NUMBER} for Job ${env.PROJECT_NAME} is ${env.BUILD_STATUS}"
    }
 }
