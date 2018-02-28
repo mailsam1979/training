@@ -24,7 +24,7 @@ node 'slave' {							// run job on master jenkins , if you have agent or slave t
       if (isUnix()) {				
          sh 'mvn -Dmaven.test.failure.ignore clean install'
       } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean install)
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean install/)
       }
    }
    
