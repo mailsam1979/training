@@ -1,4 +1,5 @@
-node('slave') {    
+node('slave') {
+   input 'Ready to go?'   
    def gitBranch = 'master'
    def mvnHome = tool 'local_maven'
    def jdkHome = tool 'local_jdk'
