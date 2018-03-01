@@ -1,5 +1,5 @@
 node('slave') {
-   input 'Ready to go?'   
+   //input 'Ready to go?'      // ask for user input to proceed
    def gitBranch = 'master'
    def mvnHome = tool 'local_maven'
    def jdkHome = tool 'local_jdk'
