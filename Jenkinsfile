@@ -17,7 +17,7 @@ node {
       }
    }
   
-  def version = getversion()		// get value form getversion() function
+  def version = getversion()
   if (version) {
 	echo "Build Version is ${version}"
 	}
