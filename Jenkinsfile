@@ -22,7 +22,7 @@ node {
 	echo "Build Version is ${version}"
 	}
   def getversion() {
-	def matcher = readFile('test.txt') =~ '<version>(.+)</version>'
+	def matcher = readFile('test.txt') =~ '<version>(.)</version>'
 	matcher ? matcher[0][1] : null
 	}
 }
