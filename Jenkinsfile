@@ -14,7 +14,7 @@ node {
       if (isUnix()) {				
          sh 'mvn -Dmaven.test.failure.ignore clean install'
       } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean install)
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean install/)
       }
    }
 }
