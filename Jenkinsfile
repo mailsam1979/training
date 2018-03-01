@@ -22,7 +22,7 @@ node {
 	echo "Build Version is ${version}"
 	}
   def getversion() {
-	def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+	def matcher = readFile('pom.xml') =~ '<artifactId>(.+)</artifactId>'
 	matcher ? matcher[0][1] : null
 	}
 }
