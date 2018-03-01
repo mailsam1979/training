@@ -5,7 +5,7 @@ node {
   
   stage ('Checkout SCM'){
   git url: 'https://github.com/mailsam1979/training.git', branch: "${gitBranch}"
-  //stash name: 'source', include: 'pom.xml,src/,Jenkinsfile'
+  stash name: 'source', include: 'pom.xml,src/'
   }
   
   stage('Code Build') {      
