@@ -1,10 +1,11 @@
 node {
-  def gitBranch = 'master'
+  def gitBranch = 'testing'
   def mvnHome = tool 'local_maven'
   def jdkHome = tool 'local_jdk'
   
   stage ('Checkout SCM'){
-  git url: 'https://github.com/mailsam1979/training.git'
+  git url: 'https://github.com/mailsam1979/training.git', branch: "${gitBranch}"
+  stash name: 'source', include: 'pom.xml,src/'
   }
   
   stage('Code Build') {      
@@ -16,13 +17,4 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean install)
       }
    }
-  
-  def version = getversion()
-  if (version) {
-	echo "Build Version is ${version}"
-	}
-  def getversion() {
-	def matcher = readFile('test.txt') =~ '<version>(.)</version>'
-	matcher ? matcher[0][1] : null
-	}
 }
